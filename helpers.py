@@ -71,26 +71,58 @@ def longest_repeat_length(protein_sequence):
 
     return max_repeat_length
 
+def count_hydrogen_donors(protein_sequence):
+    # Define amino acids with hydrogen donor atoms in their side chains
+    donor_amino_acids = set(['R', 'K', 'T'])
+    
+    # Initialize the count
+    count = 0
+    
+    # Iterate through the amino acid sequence and count donors
+    for amino_acid in protein_sequence:
+        if amino_acid in donor_amino_acids:
+            count += 1
+    
+    return count
+
+def count_hydrogen_acceptors(protein_sequence):
+    # Define amino acids with hydrogen acceptor atoms in their side chains
+    acceptor_amino_acids = set(['D', 'E'])
+    
+    # Initialize the count
+    count = 0
+    
+    # Iterate through the amino acid sequence and count acceptors
+    for amino_acid in protein_sequence:
+        if amino_acid in acceptor_amino_acids:
+            count += 1
+    
+    return count
+
+
 
 # -------------------- MAIN FUNCTION -----------------------
 def main():
     # Get active amino acid count for demo amino acid
     demo_acid = "WCDYRLRWDPRDYEGLWVLR"
     ph = 7;
-    print(f"For the amino acid {demo_acid}")
+    print(f"For the amino acid {demo_acid} -------------------")
     print("Number of AA involved in active activity: ", get_active_aa_count(demo_acid))
     print("Number of AA involved in binding", get_binding_aa_count(demo_acid))
     print("The simplified PK of an amino acid chain", calculate_protein_pK(demo_acid, ph))
-    print("Longest repeat length: ", longest_repeat_length(demo_acid));
+    print("Longest repeat length: ", longest_repeat_length(demo_acid))
+    print(f"Number of hydrogen donors: {count_hydrogen_donors(demo_acid)}")
+    print(f"Number of hydrogen acceptors: {count_hydrogen_acceptors(demo_acid)} \n")
 
-    demo_acid_2 = "KGPELGLSQFCGSLKQAAPA"
+
+    demo_acid_2 = "KGPELGLSQFCGSLKQAAPA -----------------"
     print(f"For the amino acid {demo_acid_2}")
     print("Number of AA involved in active activity: ", get_active_aa_count(demo_acid_2))
     print("Number of AA involved in binding", get_binding_aa_count(demo_acid_2))
     print("The simplified PK of an amino acid chain", calculate_protein_pK(demo_acid_2, ph))
-    print("Longest repeat length: ", longest_repeat_length(demo_acid_2));
-
-
+    print("Longest repeat length: ", longest_repeat_length(demo_acid_2))
+    print(f"Number of hydrogen donors: {count_hydrogen_donors(demo_acid_2)}")
+    print(f"Number of hydrogen acceptors: {count_hydrogen_acceptors(demo_acid_2)}")
     return
 
 # ---------------------- EXECUTION -------------------------
