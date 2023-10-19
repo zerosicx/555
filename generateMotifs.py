@@ -65,7 +65,8 @@ def main():
     values = "";
     
     # Amino acid string:
-    amino_acids = "ACDEFGHIKLMNPQRSTVWY"
+    # Pasted 3 times to allow repeats
+    amino_acids = "ACDEFGHIKLMNPQRSTVWY" * 3
     motif_length = 3
     motifs = generate_motifs(amino_acids, motif_length)
     generate_CSV(motifs)
